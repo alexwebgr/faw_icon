@@ -6,8 +6,7 @@ By design only the svg-with-js version is supported following the recommendation
 https://fontawesome.com/get-started/svg-with-js.
 
 Another great feature is that is does not bundle any icons making it super fast to download and install 
-as well as providing the ability to use new icons as they become available or opting for the 
-PRO collection.       
+as well as providing the ability to use new icons as they become available custom ones or the PRO collection.       
 
 ## Installation
 
@@ -57,13 +56,13 @@ Then just use them like this
       <%= faw_icon 'regular', 'sync', {spin: true} %>
       <%= faw_icon 'brand', 'android', {transform: 'grow-5'} %>
       
-Bear in mind that the `brand` icons only come in one style called `brand` (!)
+Bear in mind that the `brand` icons only come in one style called `brand`(!) 
 and the rest come in three variations but not all are available in the free collection.
 Find them all in the [gallery](https://fontawesome.com/icons?d=gallery)      
       
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/alexwebgr/faw_icon. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+[Issues](https://github.com/alexwebgr/faw_icon/issues) and [pull requests](https://github.com/alexwebgr/faw_icon/pulls) are more than welcome. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -71,4 +70,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the FawIcon project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/faw_icon/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the FawIcon project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/alexwebgr/faw_icon/blob/master/CODE_OF_CONDUCT.md).
