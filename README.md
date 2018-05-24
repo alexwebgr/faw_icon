@@ -2,10 +2,7 @@
 
 ### Minimalistic ruby gem that exposes a tag helper for Font Awesome icon sets.
 
-By design only the svg-with-js version is supported following the recommendations from the font-awesome docs 
-https://fontawesome.com/get-started/svg-with-js.
-
-Another great feature is that is does not bundle any icons making it super fast to download and install 
+By design it does not bundle any icons making it super fast to download and install 
 as well as providing the ability to use new icons as they become available custom ones or the PRO collection.       
 
 ## Installation
@@ -24,12 +21,17 @@ Or install it yourself as:
 
     $ gem install faw_icon
     
-You will need to download and include in your application.js the desired .js files from [Font Awesome](https://fontawesome.com/get-started/svg-with-js)
-where you can choose to include all or only a subset of them either the free ones or the PRO collections
+You will need to download the .zip folder from [Font Awesome](https://fontawesome.com/get-started/svg-with-js)
+where you can choose either the free ones or the PRO collections
 
-application.js
+Include in your application.scss the `fontawesome/svg-with-js/css/fa-svg-with-js.css` 
+ideally placing in the `app/assets/stylesheets/fa-svg-with-js.css` 
 
-     //= require fontawesome-all.min
+application.scss
+
+    @import "fa-svg-with-js";
+    
+Then copy the `fontawesome/advanced-options/metadata/icons.json` in `app/assets/javascripts/icons.json` 
      
 ## Usage
 All options from [additional-styling](https://fontawesome.com/how-to-use/svg-with-js#additional-styling) are supported with the exception of 
