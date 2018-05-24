@@ -3,7 +3,9 @@
 ### Minimalistic ruby gem that exposes a tag helper for Font Awesome icon sets.
 
 By design it does not bundle any icons making it super fast to download and install 
-as well as providing the ability to use new icons as they become available, custom ones or the PRO collection.       
+as well as providing the ability to use new icons as they become available, custom ones or the PRO collection.  
+
+[![Gem Version](https://badge.fury.io/rb/faw_icon.svg)](https://badge.fury.io/rb/faw_icon)     
 
 ## Installation
 

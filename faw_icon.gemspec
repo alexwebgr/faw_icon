@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['alexwebgr']
   spec.email         = ['email@alex-web.gr']
 
-  spec.summary       = %q{A simple gem for Font-Awesome 5 using SVG-with-JS only}
+  spec.summary       = %q{A simple helper for Font-Awesome 5 using raw SVG}
   spec.homepage      = "https://github.com/alexwebgr/faw_icon"
   spec.license       = "MIT"
 
