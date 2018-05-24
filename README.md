@@ -3,7 +3,7 @@
 ### Minimalistic ruby gem that exposes a tag helper for Font Awesome icon sets.
 
 By design it does not bundle any icons making it super fast to download and install 
-as well as providing the ability to use new icons as they become available custom ones or the PRO collection.       
+as well as providing the ability to use new icons as they become available, custom ones or the PRO collection.       
 
 ## Installation
 
@@ -22,7 +22,7 @@ Or install it yourself as:
     $ gem install faw_icon
     
 You will need to download the .zip folder from [Font Awesome](https://fontawesome.com/get-started/svg-with-js)
-where you can choose either the free ones or the PRO collections
+where you can choose either the free or the PRO collection.
 
 Include in your application.scss the `fontawesome/svg-with-js/css/fa-svg-with-js.css` 
 ideally placing in the `app/assets/stylesheets/fa-svg-with-js.css` 
@@ -35,7 +35,7 @@ Then copy the `fontawesome/advanced-options/metadata/icons.json` in `app/assets/
      
 ## Usage
 All options from [additional-styling](https://fontawesome.com/how-to-use/svg-with-js#additional-styling) are supported with the exception of 
-CSS Pseudo-elements as being informed by the documentation.
+CSS Pseudo-elements.
  
 A mapping for the properties has been introduced in an attempt to make them more readable and easier to remember
 
@@ -49,7 +49,8 @@ A mapping for the properties has been introduced in an attempt to make them more
 | data-fa-mask      | mask            | no       | fas fa-comment     | fas fa-comment               | string  |
 
 
-The `style` and `name` are required params and the rest optional ones go into a Hash in any order they might occur 
+The `style` and `name` are required params and the rest optional ones go into a Hash in any order they might occur.
+
 Then just use them like this
 
       <%= faw_icon 'solid', 'magic' %>

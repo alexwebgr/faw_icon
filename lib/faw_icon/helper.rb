@@ -2,9 +2,7 @@ require "faw_icon/version"
 
 module FawIcon
   def faw_icon(style, name, options = {})
-    if style == 'brand'
-      style = 'brands'
-    end
+    style = 'brands' if style == 'brand'
     fa_prefix = 'fa'
     html_props = {}
     icons = JSON.parse(File.read('app/assets/javascripts/icons.json'))
@@ -42,7 +40,7 @@ module FawIcon
         'far'
       when 'light'
         'fal'
-      when 'brand'
+      when 'brands'
         'fab'
     end
   end
