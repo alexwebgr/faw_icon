@@ -34,7 +34,26 @@ application.scss
     @import "fa-svg-with-js";
     
 Then copy the `fontawesome/advanced-options/metadata/icons.json` in `app/assets/javascripts/icons.json` 
+
+## Configuration 
+The below options are also available for further customization
+ 
+| Property                  | Default                           |
+|---------------------------|-----------------------------------|
+| icons_path                | app/assets/javascripts/icons.json |
+| default_family_prefix     | fa                                |
+| default_replacement_class | svg-inline--fa                    |
+
+Simply create an initializer under `/config/initializers/faw_icon.rb` and modify as needed !
+If you no option is supplied the default will be used
      
+```ruby
+FawIcon.configure do |config|
+  config.icons_path = 'app/assets/javascripts/icons.json'
+  config.default_family_prefix = 'fa'
+  config.default_replacement_class = 'svg-inline--fa'
+end
+```     
 ## Usage
 All options from [additional-styling](https://fontawesome.com/how-to-use/svg-with-js#additional-styling) are supported with the exception of 
 CSS Pseudo-elements.
