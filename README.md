@@ -66,6 +66,7 @@ A mapping for the properties has been introduced in an attempt to make them more
 | class             | name            | yes      | fa-user            | user                         | string  |
 | class             | fixed_width     | no       | fa-fw              | true                         | boolean |
 | class             | spin            | no       | fa-spin            | true                         | boolean |
+| class             | extra_class     | no       | N/A                | any custom css class         | string  |
 | data-fa-transform | transform       | no       | grow-6             | grow-6                       | string  |
 | data-fa-mask      | mask            | no       | fas fa-comment     | fas fa-comment               | string  |
 
@@ -75,6 +76,7 @@ The `style` and `name` are required params and the rest optional ones go into a 
 Then just use them like this
 
       <%= faw_icon 'solid', 'magic' %>
+      <%= faw_icon 'solid', 'star', {extra_class: 'active'} %>
       <%= faw_icon 'solid', 'user', {size: '10x'} %>
       <%= faw_icon 'light', 'info', {fixed_width: true} %>
       <%= faw_icon 'regular', 'sync', {spin: true} %>

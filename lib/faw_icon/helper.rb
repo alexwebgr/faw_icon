@@ -21,6 +21,7 @@ module FawIcon
     html_props[:class] << "#{fa_prefix}-#{options[:size]}" if options[:size]
     html_props[:class] << "#{fa_prefix}-fw" if options[:fixed_width]
     html_props[:class] << "#{fa_prefix}-spin" if options[:spin]
+    html_props[:class] << options[:extra_class] if options[:extra_class]
 
     tag = []
     tag << "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"#{view_box.join(' ')}\" class=\"#{html_props[:class].join(' ')}\""
