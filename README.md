@@ -41,6 +41,10 @@ The below options are also available for further customization
 | Property                  | Default                           |
 |---------------------------|-----------------------------------|
 | icons_path                | app/assets/javascripts/icons.json |
+| raw_svg_path              | vendor/fa5/raw-svg                |
+| svg_sprites_path          | public/fa5/svg-sprites            |
+| source_type               | json (json, raw, sprite)          |
+| icon_not_found            | `<svg>...</svg>`                    |
 | default_family_prefix     | fa                                |
 | default_replacement_class | svg-inline--fa                    |
 
@@ -53,7 +57,35 @@ FawIcon.configure do |config|
   config.default_family_prefix = 'fa'
   config.default_replacement_class = 'svg-inline--fa'
 end
-```     
+```
+
+The configuration option `source_type` is added in this release to address the performance hit from loading large json files 
+from the PRO collection and introduces three ways to include icons in the application.
+ 
+1. `json` load a json file, traverse and find the icon
+2. `raw` load a single svg file from the filesystem
+3. `sprite` load an svg sprite and target the icon by using svg fragment identifiers 
+
+They all have pros and cons so choose the one that is right for you.
+ 
+`json` a single file that contains everything however it will have a noticeable impact on performance when used with 
+the PRO collection because of the file size but not so much with the free one or a reduced set.
+
+`raw` requires to push in your codenase all 2.986 icons unless they are hosted in a CDN, AWS or just a different repo.   
+
+with `sprite` you only need four files but they can only be served from public folder for the fragment identifier feature to work 
+which makes them available for anyone to download whereas the `raw` ones are 'hidden' in the `vendor` folder. 
+
+Read more about svg sprites in the [docs](https://fontawesome.com/how-to-use/svg-sprites) 
+and [browser support](https://fontawesome.com/how-to-use/svg-sprites#browser-support)
+
+However the paths to the icons can be configured and as long the parent folder with the style name i.e. `solid`, `regular`
+and so on remains the same feel free to place anywhere you like and if possible share your solution !
+
+At the same time feel free to create a pull request if you have another idea on how to include them
+or create an issue requesting a missing feature.   
+
+
 ## Usage
 All options from [additional-styling](https://fontawesome.com/how-to-use/svg-with-js#additional-styling) are supported with the exception of 
 CSS Pseudo-elements.
