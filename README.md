@@ -44,7 +44,7 @@ The below options are also available for further customization
 | raw_svg_path              | vendor/fa5/raw-svg                |
 | svg_sprites_path          | public/fa5/svg-sprites            |
 | source_type               | json (json, raw, sprite)          |
-| icon_not_found            | `<svg>...</svg>`                    |
+| icon_not_found            | `<svg>...</svg>`                  |
 | default_family_prefix     | fa                                |
 | default_replacement_class | svg-inline--fa                    |
 
@@ -71,7 +71,7 @@ They all have pros and cons so choose the one that is right for you.
 `json` a single file that contains everything however it will have a noticeable impact on performance when used with 
 the PRO collection because of the file size but not so much with the free one or a reduced set.
 
-`raw` requires to push in your codenase all 2.986 icons unless they are hosted in a CDN, AWS or just a different repo.   
+`raw` requires to push in your codebase all 2.986 icons unless they are hosted in a CDN, AWS or just a different repo.   
 
 with `sprite` you only need four files but they can only be served from public folder for the fragment identifier feature to work 
 which makes them available for anyone to download whereas the `raw` ones are 'hidden' in the `vendor` folder. 
