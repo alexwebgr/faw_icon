@@ -6,6 +6,7 @@ By design it does not bundle any icons making it super fast to download and inst
 as well as providing the ability to use new icons as they become available, custom ones or the PRO collection.  
 
 [![Gem Version](https://badge.fury.io/rb/faw_icon.svg)](https://badge.fury.io/rb/faw_icon)     
+[![Gitter chat](https://img.shields.io/badge/join_the_chat-gitter-brightgreen.svg)](https://gitter.im/faw_icon/Lobby)     
 
 ## Installation
 
