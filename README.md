@@ -5,7 +5,7 @@
 By design it does not bundle any icons making it super fast to download and install 
 as well as providing the ability to use new icons as they become available, custom ones or the PRO collection.  
 
-[![Gem Version](https://badge.fury.io/rb/faw_icon.svg)](https://badge.fury.io/rb/faw_icon)     
+[![Gem Version](https://badge.fury.io/rb/faw_icon.svg)](https://badge.fury.io/rb/faw_icon) [![Join the chat at https://gitter.im/faw_icon/Lobby](https://badges.gitter.im/faw_icon/Lobby.svg)](https://gitter.im/faw_icon/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)     
 
 ## Installation
 
