@@ -79,7 +79,7 @@ module FawIcon
   end
 
   def svg_not_found
-    doc = REXML::Document.new(FawIcon.configuration.svg_not_found)
+    doc = REXML::Document.new(FawIcon.configuration.icon_not_found)
 
     doc.root
   end
