@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    faw_icon (0.7.2)
+    faw_icon (0.7.4)
 
 GEM
   remote: https://rubygems.org/
