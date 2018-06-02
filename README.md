@@ -60,7 +60,7 @@ FawIcon.configure do |config|
 end
 ```
 
-The configuration option `source_type` is added in this release to address the performance hit from loading large json files 
+The configuration option `source_type` was added to address the performance hit from loading large json files 
 from the PRO collection and introduces three ways to include icons in the application.
  
 1. `json` load a json file, traverse and find the icon

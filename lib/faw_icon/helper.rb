@@ -1,5 +1,6 @@
 require "faw_icon/version"
 require "faw_icon/configuration"
+require "rexml/document"
 
 module FawIcon
   def faw_icon(style, name, options = {})
@@ -29,8 +30,8 @@ module FawIcon
     icons = JSON.parse(File.read(FawIcon.configuration.icons_path))
 
     if icons[name].present? && icons[name]['svg'][style].present?
-      doc = Nokogiri::HTML(icons[name]['svg'][style]['raw'])
-      svg = doc.at_css 'svg'
+      doc = REXML::Document.new(icons[name]['svg'][style]['raw'])
+      svg = doc.root
     end
 
     fa_tag(svg, html_props)
@@ -38,8 +39,8 @@ module FawIcon
 
   def by_raw(style, name, html_props)
     if File.exists? Rails.root.join(FawIcon.configuration.raw_svg_path, style, "#{name}.svg")
-      doc = File.open(Rails.root.join(FawIcon.configuration.raw_svg_path, style, "#{name}.svg")) { |f| Nokogiri::HTML(f) }
-      svg = doc.at_css 'svg'
+      doc = File.open(Rails.root.join(FawIcon.configuration.raw_svg_path, style, "#{name}.svg")) { |f| REXML::Document.new(f) }
+      svg = doc.root
     end
 
     fa_tag(svg, html_props)
@@ -47,21 +48,21 @@ module FawIcon
 
   def by_sprite(style, name, html_props)
     if File.exists? Rails.root.join(FawIcon.configuration.svg_sprites_path, "fa-#{style}.svg")
-      doc = Nokogiri::HTML("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><use xlink:href=\"/fa5/svg-sprites/fa-#{style}.svg##{name}\"></use></svg>")
-      svg = doc.at_css 'svg'
+      doc = REXML::Document.new("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><use href=\"/fa5/svg-sprites/fa-#{style}.svg##{name}\"></use></svg>")
+      svg = doc.root
     end
 
     fa_tag(svg, html_props)
   end
 
   def fa_tag(svg = nil, html_props)
-    svg = icon_not_found if svg.nil?
+    svg = svg_not_found if svg.nil?
 
-    svg['class'] = html_props[:class].join(' ')
-    svg['data-fa-transform'] = html_props[:transform] if html_props[:transform]
-    svg['data-fa-mask'] = html_props[:mask] if html_props[:mask]
+    svg.attributes['class'] = html_props[:class].join(' ')
+    svg.attributes['data-fa-transform'] = html_props[:transform] if html_props[:transform]
+    svg.attributes['data-fa-mask'] = html_props[:mask] if html_props[:mask]
 
-    svg.to_html.html_safe
+    svg.to_s.html_safe
   end
 
   def fa_style(style)
@@ -77,9 +78,9 @@ module FawIcon
     end
   end
 
-  def icon_not_found
-    doc = Nokogiri::HTML(FawIcon.configuration.icon_not_found)
+  def svg_not_found
+    doc = REXML::Document.new(FawIcon.configuration.svg_not_found)
 
-    doc.at_css 'svg'
+    doc.root
   end
 end

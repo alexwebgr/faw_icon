@@ -1,16 +1,12 @@
 PATH
   remote: .
   specs:
-    faw_icon (0.6.2)
-      nokogiri (~> 1.8, >= 1.8.2)
+    faw_icon (0.7.2)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    mini_portile2 (2.3.0)
     minitest (5.11.3)
-    nokogiri (1.8.2)
-      mini_portile2 (~> 2.3.0)
     rake (10.5.0)
 
 PLATFORMS
