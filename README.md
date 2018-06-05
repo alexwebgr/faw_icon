@@ -34,8 +34,6 @@ application.scss
 
     @import "fa-svg-with-js";
     
-Then copy the `fontawesome/advanced-options/metadata/icons.json` in `app/assets/javascripts/icons.json` 
-
 ## Configuration 
 The below options are also available for further customization
  
@@ -44,7 +42,7 @@ The below options are also available for further customization
 | icons_path                | app/assets/javascripts/icons.json |
 | raw_svg_path              | vendor/fa5/raw-svg                |
 | svg_sprites_path          | public/fa5/svg-sprites            |
-| source_type               | json (json, raw, sprite)          |
+| source_type               | json (json, raw, sprite, js)      |
 | icon_not_found            | `<svg>...</svg>`                  |
 | default_family_prefix     | fa                                |
 | default_replacement_class | svg-inline--fa                    |
@@ -61,16 +59,18 @@ end
 ```
 
 The configuration option `source_type` was added to address the performance hit from loading large json files 
-from the PRO collection and introduces three ways to include icons in the application.
+from the PRO collection and introduces several ways to include icons in the application.
  
 1. `json` load a json file, traverse and find the icon
 2. `raw` load a single svg file from the filesystem
 3. `sprite` load an svg sprite and target the icon by using svg fragment identifiers 
+4. `js` load one or more .js files according to the recommended way described at [svg-with-js](https://fontawesome.com/how-to-use/svg-with-js)
 
 They all have pros and cons so choose the one that is right for you.
  
 `json` a single file that contains everything however it will have a noticeable impact on performance when used with 
 the PRO collection because of the file size but not so much with the free one or a reduced set.
+In order to use copy the `fontawesome/advanced-options/metadata/icons.json` in `app/assets/javascripts/icons.json` 
 
 `raw` requires to push in your codebase all 2.986 icons unless they are hosted in a CDN, AWS or just a different repo.   
 
@@ -80,8 +80,14 @@ which makes them available for anyone to download whereas the `raw` ones are 'hi
 Read more about svg sprites in the [docs](https://fontawesome.com/how-to-use/svg-sprites) 
 and [browser support](https://fontawesome.com/how-to-use/svg-sprites#browser-support)
 
+`js` uses the recommended way from Font-Awesome however it introduces a rendering issue relating to turbolinks 
+[more info](https://github.com/FortAwesome/Font-Awesome/issues/11924) 
+
 However the paths to the icons can be configured and as long the parent folder with the style name i.e. `solid`, `regular`
 and so on remains the same feel free to place anywhere you like and if possible share your solution !
+
+It is best not to mix the `source_type` configurations if you decide to switch between two types make sure to keep only the
+assets relating to that `source_type` in order to avoid manifestations of unexpected behavior.
 
 At the same time feel free to create a pull request if you have another idea on how to include them
 or create an issue requesting a missing feature.   

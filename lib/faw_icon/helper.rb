@@ -8,13 +8,15 @@ module FawIcon
     style = 'brands' if style == 'brand'
     fa_prefix = FawIcon.configuration.default_family_prefix
 
-    html_props[:class] = [fa_style(style), "#{fa_prefix}-#{name}", FawIcon.configuration.default_replacement_class]
+    html_props[:class] = [fa_style(style), "#{fa_prefix}-#{name}"]
+    html_props[:class] << FawIcon.configuration.default_replacement_class unless FawIcon.configuration.source_type == 'js'
     html_props[:class] << "#{fa_prefix}-#{options[:size]}" if options[:size]
     html_props[:class] << "#{fa_prefix}-fw" if options[:fixed_width]
     html_props[:class] << "#{fa_prefix}-spin" if options[:spin]
     html_props[:class] << options[:extra_class] if options[:extra_class]
     html_props[:transform] = options[:transform] if options[:transform]
     html_props[:mask] = options[:mask] if options[:mask]
+    html_props[:source_type] = FawIcon.configuration.source_type
 
     case FawIcon.configuration.source_type
       when 'json'
@@ -23,6 +25,8 @@ module FawIcon
         by_raw(style, name, html_props)
       when 'sprite'
         by_sprite(style, name, html_props)
+      when 'js'
+        by_js(html_props)
     end
   end
 
@@ -55,12 +59,19 @@ module FawIcon
     fa_tag(svg, html_props)
   end
 
+  def by_js(html_props)
+    doc = REXML::Document.new('<i>&nbsp;</i>')
+
+    fa_tag(doc.root, html_props)
+  end
+
   def fa_tag(svg = nil, html_props)
     svg = svg_not_found if svg.nil?
 
     svg.attributes['class'] = html_props[:class].join(' ')
     svg.attributes['data-fa-transform'] = html_props[:transform] if html_props[:transform]
     svg.attributes['data-fa-mask'] = html_props[:mask] if html_props[:mask]
+    svg.attributes['data-source-type'] = html_props[:source_type] if html_props[:source_type]
 
     svg.to_s.html_safe
   end
