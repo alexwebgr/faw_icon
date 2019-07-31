@@ -24,15 +24,15 @@ Or install it yourself as:
 
     $ gem install faw_icon
     
-You will need to download the .zip folder from [Font Awesome](https://fontawesome.com/get-started/svg-with-js)
+You will need to download the .zip folder from [Font Awesome](https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself)
 where you can choose either the free or the PRO collection.
 
-Include in your application.scss the `fontawesome/svg-with-js/css/fa-svg-with-js.css` 
-ideally placing in the `app/assets/stylesheets/fa-svg-with-js.css` 
+Include in your application.scss the `fontawesome/css/all.css` 
+ideally placing in the `app/assets/stylesheets/fontawesome/all.css` 
 
 application.scss
 
-    @import "fa-svg-with-js";
+    @import "fontawesome/all";
     
 ## Configuration 
 The below options are also available for further customization
@@ -64,21 +64,20 @@ from the PRO collection and introduces several ways to include icons in the appl
 1. `json` load a json file, traverse and find the icon
 2. `raw` load a single svg file from the filesystem
 3. `sprite` load an svg sprite and target the icon by using svg fragment identifiers 
-4. `js` load one or more .js files according to the recommended way described at [svg-with-js](https://fontawesome.com/how-to-use/svg-with-js)
+4. `js` load one or more .js files according to the recommended way described at [svg-with-js](https://fontawesome.com/how-to-use/on-the-web/using-with/jquery)
 
 They all have pros and cons so choose the one that is right for you.
  
 `json` a single file that contains everything however it will have a noticeable impact on performance when used with 
 the PRO collection because of the file size but not so much with the free one or a reduced set.
-In order to use copy the `fontawesome/advanced-options/metadata/icons.json` in `app/assets/javascripts/icons.json` 
+In order to use copy the `fontawesome/metadata/icons.json` in `app/assets/javascripts/icons.json` 
 
 `raw` requires to push in your codebase all 2.986 icons unless they are hosted in a CDN, AWS or just a different repo.   
 
 with `sprite` you only need four files but they can only be served from public folder for the fragment identifier feature to work 
 which makes them available for anyone to download whereas the `raw` ones are 'hidden' in the `vendor` folder. 
 
-Read more about svg sprites in the [docs](https://fontawesome.com/how-to-use/svg-sprites) 
-and [browser support](https://fontawesome.com/how-to-use/svg-sprites#browser-support)
+Read more about svg sprites in the [docs](https://fontawesome.com/how-to-use/on-the-web/advanced/svg-sprites)
 
 `js` uses the recommended way from Font-Awesome however it introduces a rendering issue relating to turbolinks 
 [more info](https://github.com/FortAwesome/Font-Awesome/issues/11924) 
@@ -94,20 +93,20 @@ or create an issue requesting a missing feature.
 
 
 ## Usage
-All options from [additional-styling](https://fontawesome.com/how-to-use/svg-with-js#additional-styling) are supported with the exception of 
+All options from [additional-styling](https://fontawesome.com/how-to-use/on-the-web/styling/sizing-icons) are supported with the exception of 
 CSS Pseudo-elements.
  
 A mapping for the properties has been introduced in an attempt to make them more readable and easier to remember
 
-| Original property | Mapped property | Required | Original value     | Mapped value                 | Type    |
-|-------------------|-----------------|----------|--------------------|------------------------------|---------|
+| Original property | Mapped property | Required | Original value          | Mapped value                          | Type    |
+|-------------------|-----------------|----------|-------------------------|---------------------------------------|---------|
 | class             | style           | yes      | fas, far, fal, fab, fad | solid, regular, light, brand, duotone | string  |
-| class             | name            | yes      | fa-user            | user                         | string  |
-| class             | fixed_width     | no       | fa-fw              | true                         | boolean |
-| class             | spin            | no       | fa-spin            | true                         | boolean |
-| class             | extra_class     | no       | N/A                | any custom css class         | string  |
-| data-fa-transform | transform       | no       | grow-6             | grow-6                       | string  |
-| data-fa-mask      | mask            | no       | fas fa-comment     | fas fa-comment               | string  |
+| class             | name            | yes      | fa-user                 | user                                  | string  |
+| class             | fixed_width     | no       | fa-fw                   | true                                  | boolean |
+| class             | spin            | no       | fa-spin                 | true                                  | boolean |
+| class             | extra_class     | no       | N/A                     | any custom css class                  | string  |
+| data-fa-transform | transform       | no       | grow-6                  | grow-6                                | string  |
+| data-fa-mask      | mask            | no       | fas fa-comment          | fas fa-comment                        | string  |
 
 
 The `style` and `name` are required params and the rest optional ones go into a Hash in any order they might occur.
