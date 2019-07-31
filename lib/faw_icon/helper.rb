@@ -86,6 +86,8 @@ module FawIcon
         'fal'
       when 'brands'
         'fab'
+      when 'duotone'
+        'fad'
     end
   end
 
