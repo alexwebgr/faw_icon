@@ -101,7 +101,7 @@ A mapping for the properties has been introduced in an attempt to make them more
 
 | Original property | Mapped property | Required | Original value     | Mapped value                 | Type    |
 |-------------------|-----------------|----------|--------------------|------------------------------|---------|
-| class             | style           | yes      | fas, far, fal, fab | solid, regular, light, brand | string  |
+| class             | style           | yes      | fas, far, fal, fab, fad | solid, regular, light, brand, duotone | string  |
 | class             | name            | yes      | fa-user            | user                         | string  |
 | class             | fixed_width     | no       | fa-fw              | true                         | boolean |
 | class             | spin            | no       | fa-spin            | true                         | boolean |
@@ -120,10 +120,13 @@ Then just use them like this
       <%= faw_icon 'light', 'info', {fixed_width: true} %>
       <%= faw_icon 'regular', 'sync', {spin: true} %>
       <%= faw_icon 'brand', 'android', {transform: 'grow-5'} %>
+      <%= faw_icon 'duotone', 'abacus' %>
       
 Bear in mind that the `brand` icons only come in one style called `brand`(!) 
-and the rest come in three variations but not all are available in the free collection.
-Find them all in the [gallery](https://fontawesome.com/icons?d=gallery)      
+and the rest come in four variations but not all are available in the free collection.
+Find them all in the [gallery](https://fontawesome.com/icons?d=gallery)    
+
+Note: Duotone style works just like all other icons, just use the 'duotone' style property.
       
 ## Contributing
 
