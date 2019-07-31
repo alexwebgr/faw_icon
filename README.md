@@ -101,7 +101,7 @@ A mapping for the properties has been introduced in an attempt to make them more
 
 | Original property | Mapped property | Required | Original value     | Mapped value                 | Type    |
 |-------------------|-----------------|----------|--------------------|------------------------------|---------|
-| class             | style           | yes      | fas, far, fal, fab | solid, regular, light, brand | string  |
+| class             | style           | yes      | fas, far, fal, fab, fad | solid, regular, light, brand, duotone | string  |
 | class             | name            | yes      | fa-user            | user                         | string  |
 | class             | fixed_width     | no       | fa-fw              | true                         | boolean |
 | class             | spin            | no       | fa-spin            | true                         | boolean |
