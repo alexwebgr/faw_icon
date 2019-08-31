@@ -27,8 +27,8 @@ Or install it yourself as:
 You will need to download the .zip folder from [Font Awesome](https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself)
 where you can choose either the free or the PRO collection.
 
-Include in your application.scss the `fontawesome/css/all.css` 
-ideally placing in the `app/assets/stylesheets/fontawesome/all.css` 
+Include in your application.scss the `fontawesome/css/svg-with-js.css` 
+ideally placing in the `app/assets/stylesheets/fontawesome/svg-with-js.css` 
 
 application.scss
 
