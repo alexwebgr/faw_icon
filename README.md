@@ -32,6 +32,7 @@ ideally placing in the `app/assets/stylesheets/fontawesome/svg-with-js.css`
 
 application.scss
 
+    @import "svg-with-js.min";
     @import "fontawesome/all";
     
 ## Configuration 
@@ -72,7 +73,8 @@ They all have pros and cons so choose the one that is right for you.
 the PRO collection because of the file size but not so much with the free one or a reduced set.
 In order to use copy the `fontawesome/metadata/icons.json` in `app/assets/javascripts/icons.json` 
 
-`raw` requires to push in your codebase all 2.986 icons unless they are hosted in a CDN, AWS or just a different repo.   
+`raw` requires to push in your codebase all 2.986 icons unless they are hosted in a CDN, AWS or just a different repo. And keep them 
+under `vendor/fa5`  
 
 with `sprite` you only need four files but they can only be served from public folder for the fragment identifier feature to work 
 which makes them available for anyone to download whereas the `raw` ones are 'hidden' in the `vendor` folder. 
