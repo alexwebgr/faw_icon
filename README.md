@@ -128,7 +128,10 @@ and the rest come in four variations but not all are available in the free colle
 Find them all in the [gallery](https://fontawesome.com/icons?d=gallery)    
 
 Note: Duotone style works just like all other icons, just use the 'duotone' style property.
-      
+
+## Troubleshooting
+If you get an error similar to this `cannot load such file -- rexml/document (LoadError)` you need to add [rexml](https://rubygems.org/gems/rexml) gem to your Gemfile 
+
 ## Contributing
 
 [Issues](https://github.com/alexwebgr/faw_icon/issues) and [pull requests](https://github.com/alexwebgr/faw_icon/pulls) are more than welcome. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
