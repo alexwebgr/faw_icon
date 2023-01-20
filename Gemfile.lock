@@ -1,22 +1,20 @@
 PATH
   remote: .
   specs:
-    faw_icon (0.8.4)
+    faw_icon (1.2.1)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    minitest (5.11.3)
     rake (10.5.0)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
-  bundler (~> 1.16)
+  bundler (~> 2.2)
   faw_icon!
-  minitest (~> 5.0)
   rake (~> 10.0)
 
 BUNDLED WITH
-   1.16.2
+   2.2.5

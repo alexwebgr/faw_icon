@@ -42,7 +42,7 @@ module FawIcon
   end
 
   def by_raw(style, name, html_props)
-    if File.exists? Rails.root.join(FawIcon.configuration.raw_svg_path, style, "#{name}.svg")
+    if File.exist? Rails.root.join(FawIcon.configuration.raw_svg_path, style, "#{name}.svg")
       doc = File.open(Rails.root.join(FawIcon.configuration.raw_svg_path, style, "#{name}.svg")) { |f| REXML::Document.new(f) }
       svg = doc.root
     end
@@ -51,7 +51,7 @@ module FawIcon
   end
 
   def by_sprite(style, name, html_props)
-    if File.exists? Rails.root.join(FawIcon.configuration.svg_sprites_path, "fa-#{style}.svg")
+    if File.exist? Rails.root.join(FawIcon.configuration.svg_sprites_path, "fa-#{style}.svg")
       doc = REXML::Document.new("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><use href=\"/fa5/svg-sprites/fa-#{style}.svg##{name}\"></use></svg>")
       svg = doc.root
     end
