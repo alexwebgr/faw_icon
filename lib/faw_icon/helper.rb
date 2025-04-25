@@ -42,6 +42,16 @@ module FawIcon
   end
 
   def by_raw(style, name, html_props)
+    if (faw_spec = Gem.loaded_specs['faw_files'])
+      gem_folder = faw_spec.full_gem_path, 'vendor', 'assets', 'images', 'fa', 'raw-svg'
+      if File.exist? Rails.root.join(gem_folder.join("/"), style, "#{name}.svg")
+        doc = File.open(Rails.root.join(gem_folder.join("/"), style, "#{name}.svg")) { |f| REXML::Document.new(f) }
+        svg = doc.root
+      end
+
+      return fa_tag(svg, html_props)
+    end
+
     if File.exist? Rails.root.join(FawIcon.configuration.raw_svg_path, style, "#{name}.svg")
       doc = File.open(Rails.root.join(FawIcon.configuration.raw_svg_path, style, "#{name}.svg")) { |f| REXML::Document.new(f) }
       svg = doc.root
