@@ -1,11 +1,13 @@
 PATH
   remote: .
   specs:
-    faw_icon (1.2.1)
+    faw_icon (1.4.0)
+      nokolexbor (~> 0.6.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
+    nokolexbor (0.6.0-x86_64-linux)
     rake (10.5.0)
 
 PLATFORMS

@@ -1,6 +1,6 @@
 require "faw_icon/version"
 require "faw_icon/configuration"
-require "rexml/document"
+require "nokolexbor"
 
 module FawIcon
   def faw_icon(style, name, options = {})
@@ -34,27 +34,23 @@ module FawIcon
     icons = JSON.parse(File.read(FawIcon.configuration.icons_path))
 
     if icons[name].present? && icons[name]['svg'][style].present?
-      doc = REXML::Document.new(icons[name]['svg'][style]['raw'])
-      svg = doc.root
+      doc = Nokolexbor::HTML(icons[name]['svg'][style]['raw'])
+      svg = doc.at_css("svg")
     end
 
     fa_tag(svg, html_props)
   end
 
   def by_raw(style, name, html_props)
-    if (faw_spec = Gem.loaded_specs['faw_files'])
-      gem_folder = faw_spec.full_gem_path, 'vendor', 'assets', 'images', 'fa', 'raw-svg'
-      if File.exist? Rails.root.join(gem_folder.join("/"), style, "#{name}.svg")
-        doc = File.open(Rails.root.join(gem_folder.join("/"), style, "#{name}.svg")) { |f| REXML::Document.new(f) }
-        svg = doc.root
-      end
+    image_path = FawIcon.configuration.raw_svg_path
 
-      return fa_tag(svg, html_props)
+    if (faw_spec = Gem.loaded_specs['faw_files'])
+      image_path = "#{faw_spec.full_gem_path}/vendor/assets/images/fa/raw-svg"
     end
 
-    if File.exist? Rails.root.join(FawIcon.configuration.raw_svg_path, style, "#{name}.svg")
-      doc = File.open(Rails.root.join(FawIcon.configuration.raw_svg_path, style, "#{name}.svg")) { |f| REXML::Document.new(f) }
-      svg = doc.root
+    if File.exist? Rails.root.join(image_path, style, "#{name}.svg")
+      doc = File.open(Rails.root.join(image_path, style, "#{name}.svg")) { |f| Nokolexbor::HTML(f) }
+      svg = doc.at_css('svg')
     end
 
     fa_tag(svg, html_props)
@@ -62,26 +58,26 @@ module FawIcon
 
   def by_sprite(style, name, html_props)
     if File.exist? Rails.root.join(FawIcon.configuration.svg_sprites_path, "fa-#{style}.svg")
-      doc = REXML::Document.new("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><use href=\"/fa5/svg-sprites/fa-#{style}.svg##{name}\"></use></svg>")
-      svg = doc.root
+      doc = Nokolexbor::HTML("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><use href=\"/fa5/svg-sprites/fa-#{style}.svg##{name}\"></use></svg>")
+      svg = doc.at_css("svg")
     end
 
     fa_tag(svg, html_props)
   end
 
   def by_js(html_props)
-    doc = REXML::Document.new('<i>&nbsp;</i>')
+    doc = Nokolexbor::HTML('<i>&nbsp;</i>')
 
-    fa_tag(doc.root, html_props)
+    fa_tag(doc.at_css("i"), html_props)
   end
 
   def fa_tag(svg = nil, html_props)
     svg = svg_not_found if svg.nil?
 
-    svg.attributes['class'] = html_props[:class].join(' ')
-    svg.attributes['data-fa-transform'] = html_props[:transform] if html_props[:transform]
-    svg.attributes['data-fa-mask'] = html_props[:mask] if html_props[:mask]
-    svg.attributes['data-source-type'] = html_props[:source_type] if html_props[:source_type]
+    svg['class'] = html_props[:class].join(' ')
+    svg['data-fa-transform'] = html_props[:transform] if html_props[:transform]
+    svg['data-fa-mask'] = html_props[:mask] if html_props[:mask]
+    svg['data-source-type'] = html_props[:source_type] if html_props[:source_type]
 
     svg.to_s.html_safe
   end
@@ -102,8 +98,8 @@ module FawIcon
   end
 
   def svg_not_found
-    doc = REXML::Document.new(FawIcon.configuration.icon_not_found)
+    doc = Nokolexbor::HTML(FawIcon.configuration.icon_not_found)
 
-    doc.root
+    doc.at_css("svg")
   end
 end
